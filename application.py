@@ -68,7 +68,15 @@ threading.Thread(target=_eager_load_background, daemon=True).start()
 DEMO_HTML = """
 <!doctype html>
 <html lang="en">
-  *** write HTML for a simple demo page with a form to input text and display prediction results ***
+  <head>
+  </head>
+  <body>
+    <h1>Text Classifier Demo</h1>
+    <p>Enter text to classify:</p>
+    <textarea placeholder="Type here..."></textarea>
+    <button>Predict</button>
+    <p>Prediction: *prediction output here*</p>
+  </body>
 </html>
 """
 
