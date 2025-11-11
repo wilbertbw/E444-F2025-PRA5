@@ -73,9 +73,30 @@ DEMO_HTML = """
   <body>
     <h1>Text Classifier Demo</h1>
     <p>Enter text to classify:</p>
-    <textarea placeholder="Type here..."></textarea>
-    <button>Predict</button>
-    <p>Prediction: *prediction output here*</p>
+    <p id="errorMsg"></p>
+    <textarea id="message" placeholder="Type here..."></textarea>
+    <button id="predict-btn">Predict</button>
+    <p id="prediction"></p>
+    <script>
+    document.getElementById('predict-btn').onclick = async function() {
+        const message = document.getElementById('message').value.trim();
+        if (!message) {
+            document.getElementById('errorMsg').textContent = "Please enter a message.";
+            return;
+        }
+        const response = await fetch('/predict', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ message })
+        });
+        const data = await response.json();
+        if (data.label !== undefined) {
+            document.getElementById('prediction').textContent = "Prediction: " + data.label;
+        } else {
+            document.getElementById('message').textContent = (data.error || "Unknown error");
+        }
+    };
+    </script>
   </body>
 </html>
 """
