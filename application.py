@@ -71,12 +71,16 @@ DEMO_HTML = """
   <head>
   </head>
   <body>
-    <h1>Text Classifier Demo</h1>
-    <p>Enter text to classify:</p>
-    <p id="errorMsg"></p>
-    <textarea id="message" placeholder="Type here..."></textarea>
-    <button id="predict-btn">Predict</button>
-    <p id="prediction"></p>
+    <h1 style="font-family: Helvetica Neue, Arial, sans-serif;">Text Classifier Demo</h1>
+    <p style="font-family: Helvetica Neue, Arial, sans-serif;">Enter text to classify:</p>
+    <p id="errorMsg" style="font-family: Helvetica Neue, Arial, sans-serif;"></p>
+    <div>
+        <textarea id="message" style="width: 400px; height: 150px; font-family: Helvetica Neue, Arial, sans-serif;" placeholder="Type here..." ></textarea>
+    </div>
+    <div>
+        <button id="predict-btn" style="background-color: lightgrey; padding: 8px; border: 0px; font-size: 14px; border-radius: 8px; font-family: Helvetica Neue, Arial, sans-serif;">Predict</button>
+    </div>
+    <p id="prediction" style="font-family: Helvetica Neue, Arial, sans-serif;"></p>
     <script>
     document.getElementById('predict-btn').onclick = async function() {
         const message = document.getElementById('message').value.trim();
